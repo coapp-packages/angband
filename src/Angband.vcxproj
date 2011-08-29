@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A9421E6B-CFBF-4900-9A41-56C2AFFB04A1}</ProjectGuid>
+    <RootNamespace>Angband</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Platform)'=='Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Platform)'=='Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir);$(ProjectDir)win\;$(ProjectDir)win\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)win\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\</OutDir>
+    <IntDir>$(Configuration)-temp\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(ProjectDir);$(ProjectDir)win\;$(ProjectDir)win\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)win\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\</OutDir>
+    <IntDir>$(Configuration)-temp\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <!-- Linker goes here -->
+      <AdditionalDependencies>Winmm.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+	<PostBuildEvent>
+	  <Command>copy $(ProjectDir)win\dll\*.dll $(ProjectDir)..\</Command>
+	</PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+	<PostBuildEvent>
+	  <Command>copy $(ProjectDir)win\dll\*.dll $(ProjectDir)..\</Command>
+	</PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="angband.h" />
+    <ClInclude Include="attack.h" />
+    <ClInclude Include="birth.h" />
+    <ClInclude Include="button.h" />
+    <ClInclude Include="cave.h" />
+    <ClInclude Include="cmds.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="debug.h" />
+    <ClInclude Include="defines.h" />
+    <ClInclude Include="effects.h" />
+    <ClInclude Include="externs.h" />
+    <ClInclude Include="files.h" />
+    <ClInclude Include="game-cmd.h" />
+    <ClInclude Include="game-event.h" />
+    <ClInclude Include="generate.h" />
+    <ClInclude Include="h-basic.h" />
+    <ClInclude Include="history.h" />
+    <ClInclude Include="init.h" />
+    <ClInclude Include="list-blow-effects.h" />
+    <ClInclude Include="list-blow-methods.h" />
+    <ClInclude Include="list-effects.h" />
+    <ClInclude Include="list-gf-types.h" />
+    <ClInclude Include="list-mon-flags.h" />
+    <ClInclude Include="list-mon-spells.h" />
+    <ClInclude Include="list-object-flags.h" />
+    <ClInclude Include="list-player-flags.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="monster\constants.h" />
+    <ClInclude Include="monster\list-blow-effects.h" />
+    <ClInclude Include="monster\list-blow-methods.h" />
+    <ClInclude Include="monster\list-mon-flags.h" />
+    <ClInclude Include="monster\list-mon-spells.h" />
+    <ClInclude Include="monster\list-spell-effects.h" />
+    <ClInclude Include="monster\monster.h" />
+    <ClInclude Include="monster\types.h" />
+    <ClInclude Include="object\constants.h" />
+    <ClInclude Include="object\inventory.h" />
+    <ClInclude Include="object\list-object-flags.h" />
+    <ClInclude Include="object\list-slays.h" />
+    <ClInclude Include="object\object.h" />
+    <ClInclude Include="object\tvalsval.h" />
+    <ClInclude Include="object\types.h" />
+    <ClInclude Include="option.h" />
+    <ClInclude Include="parser.h" />
+    <ClInclude Include="player\player.h" />
+    <ClInclude Include="player\types.h" />
+    <ClInclude Include="prefs.h" />
+    <ClInclude Include="savefile.h" />
+    <ClInclude Include="spells.h" />
+    <ClInclude Include="squelch.h" />
+    <ClInclude Include="store.h" />
+    <ClInclude Include="target.h" />
+    <ClInclude Include="textui.h" />
+    <ClInclude Include="trap.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="ui-birth.h" />
+    <ClInclude Include="ui-event.h" />
+    <ClInclude Include="ui-menu.h" />
+    <ClInclude Include="ui.h" />
+    <ClInclude Include="win\include\png.h" />
+    <ClInclude Include="win\include\pngconf.h" />
+    <ClInclude Include="win\include\zconf.h" />
+    <ClInclude Include="win\include\zlib.h" />
+    <ClInclude Include="win\readdib.h" />
+    <ClInclude Include="win\unistd.h" />
+    <ClInclude Include="wizard.h" />
+    <ClInclude Include="x-char.h" />
+    <ClInclude Include="z-bitflag.h" />
+    <ClInclude Include="z-debug.h" />
+    <ClInclude Include="z-file.h" />
+    <ClInclude Include="z-form.h" />
+    <ClInclude Include="z-msg.h" />
+    <ClInclude Include="z-quark.h" />
+    <ClInclude Include="z-rand.h" />
+    <ClInclude Include="z-term.h" />
+    <ClInclude Include="z-textblock.h" />
+    <ClInclude Include="z-type.h" />
+    <ClInclude Include="z-util.h" />
+    <ClInclude Include="z-virt.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="attack.c" />
+    <ClCompile Include="birth.c" />
+    <ClCompile Include="buildid.c" />
+    <ClCompile Include="button.c" />
+    <ClCompile Include="cave.c" />
+    <ClCompile Include="cmd-misc.c" />
+    <ClCompile Include="cmd-obj.c" />
+    <ClCompile Include="cmd0.c" />
+    <ClCompile Include="cmd1.c" />
+    <ClCompile Include="cmd2.c" />
+    <ClCompile Include="cmd3.c" />
+    <ClCompile Include="cmd4.c" />
+    <ClCompile Include="death.c" />
+    <ClCompile Include="debug.c" />
+    <ClCompile Include="dungeon.c" />
+    <ClCompile Include="effects.c" />
+    <ClCompile Include="files.c" />
+    <ClCompile Include="game-cmd.c" />
+    <ClCompile Include="game-event.c" />
+    <ClCompile Include="generate.c" />
+    <ClCompile Include="guid.c" />
+    <ClCompile Include="history.c" />
+    <ClCompile Include="init2.c" />
+    <ClCompile Include="keymap.c" />
+    <ClCompile Include="load.c" />
+    <ClCompile Include="main-win.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="monster\init.c" />
+    <ClCompile Include="monster\melee1.c" />
+    <ClCompile Include="monster\melee2.c" />
+    <ClCompile Include="monster\mon-lore.c" />
+    <ClCompile Include="monster\mon-make.c" />
+    <ClCompile Include="monster\mon-msg.c" />
+    <ClCompile Include="monster\mon-power.c" />
+    <ClCompile Include="monster\mon-spell.c" />
+    <ClCompile Include="monster\mon-util.c" />
+    <ClCompile Include="object\identify.c" />
+    <ClCompile Include="object\obj-desc.c" />
+    <ClCompile Include="object\obj-flag.c" />
+    <ClCompile Include="object\obj-info.c" />
+    <ClCompile Include="object\obj-make.c" />
+    <ClCompile Include="object\obj-power.c" />
+    <ClCompile Include="object\obj-ui.c" />
+    <ClCompile Include="object\obj-util.c" />
+    <ClCompile Include="object\pval.c" />
+    <ClCompile Include="object\randart.c" />
+    <ClCompile Include="object\slays.c" />
+    <ClCompile Include="option.c" />
+    <ClCompile Include="parser.c" />
+    <ClCompile Include="pathfind.c" />
+    <ClCompile Include="player\calcs.c" />
+    <ClCompile Include="player\class.c" />
+    <ClCompile Include="player\player.c" />
+    <ClCompile Include="player\player_util.c" />
+    <ClCompile Include="player\race.c" />
+    <ClCompile Include="player\spell.c" />
+    <ClCompile Include="player\timed.c" />
+    <ClCompile Include="prefs.c" />
+    <ClCompile Include="randname.c" />
+    <ClCompile Include="save.c" />
+    <ClCompile Include="savefile.c" />
+    <ClCompile Include="score.c" />
+    <ClCompile Include="signals.c" />
+    <ClCompile Include="snd-sdl.c" />
+    <ClCompile Include="spells1.c" />
+    <ClCompile Include="spells2.c" />
+    <ClCompile Include="squelch.c" />
+    <ClCompile Include="store.c" />
+    <ClCompile Include="tables.c" />
+    <ClCompile Include="target.c" />
+    <ClCompile Include="trap.c" />
+    <ClCompile Include="ui-birth.c" />
+    <ClCompile Include="ui-event.c" />
+    <ClCompile Include="ui-knowledge.c" />
+    <ClCompile Include="ui-menu.c" />
+    <ClCompile Include="ui-options.c" />
+    <ClCompile Include="ui-spell.c" />
+    <ClCompile Include="ui.c" />
+    <ClCompile Include="util.c" />
+    <ClCompile Include="variable.c" />
+    <ClCompile Include="win\readdib.c" />
+    <ClCompile Include="win\readpng.c" />
+    <ClCompile Include="wiz-spoil.c" />
+    <ClCompile Include="wiz-stats.c" />
+    <ClCompile Include="wizard.c" />
+    <ClCompile Include="x-char.c" />
+    <ClCompile Include="x-spell.c" />
+    <ClCompile Include="xtra2.c" />
+    <ClCompile Include="xtra3.c" />
+    <ClCompile Include="z-bitflag.c" />
+    <ClCompile Include="z-file.c" />
+    <ClCompile Include="z-form.c" />
+    <ClCompile Include="z-msg.c" />
+    <ClCompile Include="z-quark.c" />
+    <ClCompile Include="z-queue.c" />
+    <ClCompile Include="z-rand.c" />
+    <ClCompile Include="z-term.c" />
+    <ClCompile Include="z-textblock.c" />
+    <ClCompile Include="z-type.c" />
+    <ClCompile Include="z-util.c" />
+    <ClCompile Include="z-virt.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="win\angband.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="angband.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
