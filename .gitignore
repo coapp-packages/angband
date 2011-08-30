@@ -20,3 +20,5 @@ src/tests/ran-already
 .deps
 doc/manual/*.aux
 mk/buildsys.mk
+src/Release-temp/
+src/Debug-temp/

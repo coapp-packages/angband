@@ -6,7 +6,19 @@
 #if (!defined(HAVE_STDINT_H))
 /* MSVC doesn't have stdint.h (which is C99), so we'll just
  * create the right pointer manually. */
+
+/* MSVC contains this type by default in Visual Studio 2003+.
+ *   http://msdn.microsoft.com/en-us/library/323b6b3k(v=VS.71).aspx
+ * Version macro returns 1300 for VS 2003.
+ *
+ * -Tim Rogers  (Microsoft)
+ */
+#ifdef _MSC_VER
+#if (_MSC_VER < 1300)
+
 typedef unsigned int * uintptr_t;
+#endif
+#endif
 #endif
 
 struct queue {

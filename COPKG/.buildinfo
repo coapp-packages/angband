@@ -1,0 +1,27 @@
+#product-info  
+{    
+	product-name: "Angband";    
+	version: "3.3.0";    
+	original-source-location: "https://github.com/angband/angband";    
+	original-source-website: "http://rephial.org/";    
+	license: "GPLv2, Angband";    
+}
+
+x86 {    
+
+compiler: vc10-x86;
+         
+targets: {
+	"Angband.exe"
+};
+
+build-command:@"
+	msbuild src\Angband.vcxproj /p:Platform=Win32 /p:Configuration=Release
+";
+
+clean-command:@"
+	REM call COPKG\clean.cmd
+";
+
+};
+
